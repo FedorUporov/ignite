@@ -93,6 +93,17 @@ BOOST_AUTO_TEST_CASE(IgniteImplProjection)
     BOOST_REQUIRE(impl->GetProjection().IsValid());
 }
 
+BOOST_AUTO_TEST_CASE(IgniteImplGetCluster)
+{
+    impl::IgniteImpl* impl = impl::IgniteImpl::GetFromProxy(node);
+
+    BOOST_REQUIRE(impl != 0);
+
+    SharedPointer<impl::cluster::IgniteClusterImpl> igniteCluster = impl->GetCluster();
+
+    BOOST_REQUIRE(igniteCluster.IsValid());
+}
+
 BOOST_AUTO_TEST_CASE(IgniteImplForAttribute)
 {
     impl::IgniteImpl* impl = impl::IgniteImpl::GetFromProxy(node);
