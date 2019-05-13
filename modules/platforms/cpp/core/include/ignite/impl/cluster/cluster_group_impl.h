@@ -58,6 +58,20 @@ namespace ignite
                 ~ClusterGroupImpl();
 
                 /**
+                 * Get cluster group implementation for nodes containing given name and value specified in user attributes.
+                 *
+                 * @return Specified nodes cluster group implementation.
+                 */
+                SP_ClusterGroupImpl ForAttribute(std::string name, std::string val);
+
+                /**
+                 * Get cluster group implementation for all data nodes that have the cache with the specified name running.
+                 *
+                 * @return All data nodes cluster group implementation.
+                 */
+                SP_ClusterGroupImpl ForDataNodes(std::string cacheName);
+
+                /**
                  * Get server nodes cluster group implementation.
                  *
                  * @return Server nodes cluster group implementation.
@@ -88,6 +102,14 @@ namespace ignite
 
             private:
                 IGNITE_NO_COPY_ASSIGNMENT(ClusterGroupImpl);
+
+                /**
+                 * TODO: Add detailed description.
+                 * See dotnet: private IClusterGroup ForCacheNodes(string name, int op)
+                 *
+                 * @return New cluster group implementation.
+                 */
+                SP_ClusterGroupImpl ForCacheNodes(std::string name, int32_t op);
 
                 /**
                  * Make cluster group implementation using java reference and
